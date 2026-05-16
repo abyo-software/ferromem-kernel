@@ -1,0 +1,29 @@
+ferromem-kernel
+Copyright 2026 abyo-software K.K.
+
+This product includes software developed by abyo-software K.K.
+
+Licensed under the Apache License, Version 2.0 (the "License").
+See the file LICENSE for the full text.
+
+==============================================================================
+Trademark notice
+==============================================================================
+
+"FerroMem", "Ferro", and the FerroMem logo are trademarks of abyo-software
+K.K. The Apache License 2.0 grants no rights to use these trademarks. Forks
+of this software must rebrand to a name that does not include "FerroMem"
+or "Ferro".
+
+==============================================================================
+Third-party components
+==============================================================================
+
+This kernel module is designed to interoperate with the Linux kernel zram
+subsystem (drivers/block/zram/) which is licensed under GPLv2. The kernel
+module is dual-licensed for the loading purpose only, per MODULE_LICENSE("GPL");
+the source distribution under this repository remains Apache 2.0.
+
+XRT (Xilinx Runtime) headers are referenced for compilation but not bundled.
+XRT is distributed by AMD/Xilinx under its own license; please refer to
+https://github.com/Xilinx/XRT for its terms.

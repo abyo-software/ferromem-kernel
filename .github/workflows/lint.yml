@@ -1,0 +1,70 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  checkpatch:
+    name: checkpatch.pl
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y linux-headers-$(uname -r) || \
+            sudo apt-get install -y linux-headers-generic
+
+      - name: Locate checkpatch.pl
+        id: locate
+        run: |
+          if command -v checkpatch.pl >/dev/null 2>&1; then
+            echo "checkpatch=$(command -v checkpatch.pl)" >> $GITHUB_OUTPUT
+          else
+            checkpatch=$(find /usr/src -path '*/scripts/checkpatch.pl' 2>/dev/null | head -1)
+            if [ -z "$checkpatch" ]; then
+              echo "checkpatch.pl not found in /usr/src; downloading from kernel.org"
+              wget -q https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -O /tmp/checkpatch.pl
+              wget -q https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt -O /tmp/spelling.txt
+              chmod +x /tmp/checkpatch.pl
+              echo "checkpatch=/tmp/checkpatch.pl" >> $GITHUB_OUTPUT
+            else
+              echo "checkpatch=$checkpatch" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Run checkpatch.pl on src/
+        run: |
+          find src -name '*.c' -o -name '*.h' | \
+            xargs ${{ steps.locate.outputs.checkpatch }} --no-tree --file --strict --no-summary || true
+
+  dco-check:
+    name: DCO sign-off
+    runs-on: ubuntu-24.04
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify all commits in PR have Signed-off-by
+        run: |
+          base=${{ github.event.pull_request.base.sha }}
+          head=${{ github.event.pull_request.head.sha }}
+          missing=0
+          for sha in $(git rev-list "$base".."$head"); do
+            if ! git log -1 --format=%B "$sha" | grep -q '^Signed-off-by:'; then
+              echo "Commit $sha is missing Signed-off-by"
+              missing=$((missing + 1))
+            fi
+          done
+          if [ "$missing" -gt 0 ]; then
+            echo "Please sign off your commits with 'git commit -s'. See DCO.md."
+            exit 1
+          fi

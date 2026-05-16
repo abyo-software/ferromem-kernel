@@ -1,0 +1,45 @@
+name: kernel-build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: build (kernel ${{ matrix.kernel }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        kernel: ["6.8", "6.10"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: Install kernel headers (${{ matrix.kernel }})
+        run: |
+          # GitHub Actions runners ship multiple linux-headers packages.
+          # Use the currently-running kernel for now; replace with explicit
+          # version pin when matrix builds against arbitrary kernels.
+          sudo apt-get install -y linux-headers-$(uname -r) || \
+            sudo apt-get install -y linux-headers-generic
+
+      - name: Build
+        run: make
+
+      - name: Verify module file
+        run: |
+          test -f ferromem_zram.ko
+          modinfo ferromem_zram.ko | tee modinfo.txt
+          grep -q "license:.*GPL" modinfo.txt
+          grep -q "version:.*0.0" modinfo.txt
+
+      - name: Clean
+        run: make clean
