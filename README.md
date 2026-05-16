@@ -142,7 +142,7 @@ The kernel module is dual-licensed under GPLv2 *for the purpose of loading into 
 
 ## Trademarks
 
-"FerroMem" is a trademark of **abyo-software K.K.** This Apache 2.0 license does not grant trademark rights. Forks may use the source but must rebrand. See [LICENSE](LICENSE) §6 and the `NOTICE` file.
+"FerroMem" is a trademark of **abyo-software G.K.** (合同会社 abyo-software, a Japanese Limited Liability Company / Godo Kaisha). This Apache 2.0 license does not grant trademark rights. Forks may use the source but must rebrand. See [LICENSE](LICENSE) §6 and the `NOTICE` file.
 
 ## Links
 

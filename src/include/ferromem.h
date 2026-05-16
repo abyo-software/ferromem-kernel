@@ -2,7 +2,7 @@
 /*
  * ferromem.h — common definitions for the FerroMem kernel module
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

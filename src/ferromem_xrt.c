@@ -2,7 +2,7 @@
 /*
  * ferromem_xrt.c — XRT command queue (skeleton)
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  * Without the proprietary AFI bitstream from the AWS Marketplace AMI
  * (or a fork-built equivalent), all operations return -EOPNOTSUPP.
  */

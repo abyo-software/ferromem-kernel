@@ -2,7 +2,7 @@
 /*
  * ferromem_ioctl.c — char-device + ioctl interface for ferromem-cli
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  * Phase 2 m3 plan: /dev/ferromem-zram char device, FERROMEM_IOC_GET_STATS /
  *                  FERROMEM_IOC_SET_ALG / FERROMEM_IOC_RESET.
  */

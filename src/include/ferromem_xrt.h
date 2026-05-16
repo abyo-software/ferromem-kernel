@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: Apache-2.0 OR GPL-2.0 */
-/* Copyright 2026 abyo-software K.K. */
+/* Copyright 2026 abyo-software G.K. */
 
 #ifndef FERROMEM_XRT_H
 #define FERROMEM_XRT_H

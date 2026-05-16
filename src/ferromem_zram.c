@@ -2,7 +2,7 @@
 /*
  * ferromem_zram.c — zram backend (zcomp_backend) implementation
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  * Skeleton — returns -EOPNOTSUPP until v0.1.0 (Phase 2 month 3).
  */
 

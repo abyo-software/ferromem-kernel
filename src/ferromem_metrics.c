@@ -2,7 +2,7 @@
 /*
  * ferromem_metrics.c — sysfs metrics exporter
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  * Phase 2 m3 plan: expose /sys/kernel/ferromem/{compression_ratio,
  *                                                throughput,queue_depth,errors}.
  */

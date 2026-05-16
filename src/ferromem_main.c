@@ -2,7 +2,7 @@
 /*
  * ferromem_main.c — kernel module init / exit
  *
- * Copyright 2026 abyo-software K.K.
+ * Copyright 2026 abyo-software G.K.
  * Skeleton (v0.0.1) — working implementation lands Phase 2 month 3.
  */
 
@@ -59,6 +59,6 @@ module_init(ferromem_init);
 module_exit(ferromem_exit);
 
 MODULE_LICENSE("GPL");                /* loadable into Linux kernel; source dual-licensed Apache-2.0 */
-MODULE_AUTHOR("abyo-software K.K.");
+MODULE_AUTHOR("abyo-software G.K.");
 MODULE_DESCRIPTION("Linux zram backend for FPGA-accelerated memory compression (FerroMem)");
 MODULE_VERSION("0.0.1");

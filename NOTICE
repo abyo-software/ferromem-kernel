@@ -1,7 +1,7 @@
 ferromem-kernel
-Copyright 2026 abyo-software K.K.
+Copyright 2026 abyo-software G.K.
 
-This product includes software developed by abyo-software K.K.
+This product includes software developed by abyo-software G.K.
 
 Licensed under the Apache License, Version 2.0 (the "License").
 See the file LICENSE for the full text.
@@ -11,7 +11,8 @@ Trademark notice
 ==============================================================================
 
 "FerroMem", "Ferro", and the FerroMem logo are trademarks of abyo-software
-K.K. The Apache License 2.0 grants no rights to use these trademarks. Forks
+G.K. (合同会社 abyo-software, a Japanese Limited Liability Company / Godo
+Kaisha). The Apache License 2.0 grants no rights to use these trademarks. Forks
 of this software must rebrand to a name that does not include "FerroMem"
 or "Ferro".
 
